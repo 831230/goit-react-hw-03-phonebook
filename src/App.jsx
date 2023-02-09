@@ -71,24 +71,12 @@ class App extends Component {
     return filteredArray;
   };
 
-  deleteContact = event => {
-    let contactIndex;
-    this.state.contacts.map((element, index) => {
-      if (event.target.parentNode.textContent.includes(element.name)) {
-        contactIndex = index;
-      }
-      return contactIndex;
-    });
+  deleteContact = id => {
     const newContacts = [...this.state.contacts];
-    newContacts.splice(contactIndex, 1);
-    this.setState(
-      {
-        contacts: newContacts,
-      },
-      () => {
-        localStorage.setItem('contacts', JSON.stringify(newContacts));
-      }
-    );
+    const contacts = newContacts.filter(contact => contact.id !== id);
+    this.setState({
+      contacts,
+    });
   };
 
   componentDidMount() {

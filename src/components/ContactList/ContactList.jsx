@@ -6,10 +6,10 @@ const ContactList = ({ names, btnAction }) => {
       {names &&
         names.map(name => {
           return (
-            <li key={name.id} >
+            <li key={name.id}>
               {name.name}
               &#58;&#8194;{name.number}
-              <button onClick={btnAction}>Delete</button>
+              <button onClick={() => btnAction(name.id)}>Delete</button>
             </li>
           );
         })}
